@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lungs Cancer Prediction</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+
+    {% load static %}
+  <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}"/>
+<link rel="stylesheet" href="/static/css/newstyles.css">
+
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+    </style>
+</head>
+<body class="bg-white font-family-karla h-screen">
+
+    <div class = "top">
+        <a href="/"><p class = "top" style="color: white; border-color:white;"> Drug Target Compatibality </p></a>
+        </div>
+    
+
+    <div class="w-full flex flex-wrap top-space  my-18">
+
+        <!-- Register Section -->
+        <div class="w-full md:w-1/3 flex flex-col">
+
+
+            <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+               
+                <form class="flex flex-col pt-3 md:pt-8" action= "./" method="post">
+                    {% csrf_token %}
+
+               
+            </div>
+
+        </div>
+
+ <!-- Register Section -->
+ <div class="w-full md:w-3/3 flex flex-col">
+
+
+    <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+       
+    
+            <div class="flex flex-col pt-4 mb-3">
+             
+            </div>
+
+            <div class="flex flex-col pt-4 mb-3">
+              <label for="drug" class="text-lg ph-area">Drug SMILES</label>
+              <input type="text" name="drug" id="drug" placeholder="Drug Smiles" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" style="color: white; border-color:white;" required>
+          </div>
+
+
+          <div class="flex flex-col pt-4 mb-3">
+            <label for="protein" class="text-lg ph-area">Protein Sequence</label>
+            <input type="text" name="protein" id="protein" placeholder="Protein Sequence" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" style="color: white; border-color:white;" required>
+        </div>
+
+            <div class="flex flex-col pt-4 mb-3">
+                
+                <div class="text-4xl" style = "max-width : 800px right:200px">
+                    {% if y_pred > 50 and toxicity == 0 %}
+                        <p style = "max-width : 800px right:200px">{{y_pred}} is  good binding value and the drug-target pair is a good one.</p>
+                        <p > and {{toxicity}} toxicity is also good.</p>
+
+                    {% else %}
+                        <p> The combination is not a good one.</p>
+                    {% endif %}
+                </div>
+                
+            </div>
+
+            <div class="flex flex-col pt-4 mb-3">
+                            
+            </div>
+        
+    </div>
+    <div class ="flex items-center justify-center h-screen">
+        
+    </div>
+</div>
+
+
+
+        <!-- Register Section -->
+        <div class="w-full md:w-3/3 flex flex-col">
+
+
+            <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+               
+               
+                    
+                    <a>
+                        <button type="submit" class="fixed bottom-20 left-75 bg-blue-500 text-white py-4 px-6 rounded text-center" >
+                            Submit
+                        </button>
+                    </a>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+ 
+</body>
+<footer>
+
+</footer>
+</html>
